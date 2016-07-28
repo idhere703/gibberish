@@ -10,7 +10,8 @@ let file = process.argv[2];
 fs.readFile(file, 'utf8', (err, data) => {
   if (err) throw err;
   // Split the array.
-  data = data.replace(/\r?\n|\r/g, "");
+  data = data.replace(/\r?\n|\r/g, "").split(" ");
+  console.log(data);
   let gibberish = [];
 
 });
