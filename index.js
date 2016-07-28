@@ -5,9 +5,12 @@ if(process.argv.length < 3) {
   process.exit(1);
 }
 
-var file = process.argv[2];
+let file = process.argv[2];
 
-fs.readFile(file, 'utf8', function(err, data) {
+fs.readFile(file, 'utf8', (err, data) => {
   if (err) throw err;
-  console.log(data)
+  // Split the array.
+  data = data.replace(/\r?\n|\r/g, "");
+  let gibberish = [];
+
 });
