@@ -11,7 +11,14 @@ fs.readFile(file, 'utf8', (err, data) => {
   if (err) throw err;
   // Split the array.
   data = data.replace(/\r?\n|\r/g, "").split(" ");
-  console.log(data);
-  let gibberish = [];
+
+  let j, x, i;
+  for (i = data.length; i; i--) {
+      j = Math.floor(Math.random() * i);
+      x = data[i - 1];
+      data[i - 1] = data[j];
+      data[j] = x;
+  }
+  console.log(data.join());
 
 });
