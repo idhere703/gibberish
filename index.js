@@ -5,13 +5,8 @@ if(process.argv.length < 3) {
   process.exit(1);
 }
 
-let file = process.argv[2];
-
-fs.readFile(file, 'utf8', (err, data) => {
-  if (err) throw err;
-  // Split the array.
-  data = data.replace(/\r?\n|\r/g, "").split(" ");
-
+// Takes an array then returns the same array all mixed up.
+function shuffleWords(data) {
   let j, x, i;
   for (i = data.length; i; i--) {
       j = Math.floor(Math.random() * i);
@@ -19,6 +14,24 @@ fs.readFile(file, 'utf8', (err, data) => {
       data[i - 1] = data[j];
       data[j] = x;
   }
-  console.log(data.join());
+  return data;
+}
 
+// Takes a file name as the arg, reads the file and returns when ready.
+function readFile(file) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(file, 'utf8', (err, data) => {
+      if (err) reject(err);
+      // Split the array.
+      data = data.replace(/\r?\n|\r/g, "").split(" ").join();
+      resolve(data);
+    });
+  });
+
+}
+
+let file = process.argv[2];
+
+readFile(file).then((val) => {
+  console.log(val);
 });
