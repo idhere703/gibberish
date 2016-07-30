@@ -1,4 +1,5 @@
-var fs = require('fs');
+let fs = require('fs');
+let files = [];
 
 // If we don't have a file.
 if(process.argv.length < 3) {
@@ -23,15 +24,25 @@ function readFile(file) {
     fs.readFile(file, 'utf8', (err, data) => {
       if (err) reject(err);
       // Split the array.
-      console.log(data);
       data = data.split("\n");
-      resolve(data);
+      resolve(shuffleWords(data));
     });
   });
 }
 
-let file = process.argv[2];
 
-readFile(file).then((val) => {
-  console.log(val);
-});
+function getFiles() {
+  // Main process block.
+  process.argv.map((file, index) => {
+    // Ignore the first two args.
+    if(index >= 2) {
+      readFile(file).then((val) => {
+        files.push(val);
+        console.log(val.length);
+      });
+    }
+  });
+}
+
+// Get the files and print them.
+getFiles();
