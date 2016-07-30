@@ -23,11 +23,11 @@ function readFile(file) {
     fs.readFile(file, 'utf8', (err, data) => {
       if (err) reject(err);
       // Split the array.
-      data = data.replace(/\r?\n|\r/g, "").split(" ").join();
+      console.log(data);
+      data = data.split("\n");
       resolve(data);
     });
   });
-
 }
 
 let file = process.argv[2];
