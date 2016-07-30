@@ -38,7 +38,7 @@ function getFiles() {
     if(index >= 2) {
       readFile(file).then((val) => {
         files.push(val);
-        console.log(val.length);
+        console.log(val.join(", "));
       });
     }
   });
