@@ -44,7 +44,7 @@ function getFiles() {
   Promise.all(promises).then(vals => {
     // Merged all the arrays.
     vals = [].concat.apply([], vals);
-    console.log(vals.length);
+    console.log(vals.join(", "));
   });
 }
 
