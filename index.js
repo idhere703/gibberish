@@ -33,14 +33,18 @@ function readFile(file) {
 
 function getFiles() {
   // Main process block.
+  let promises = [];
   process.argv.map((file, index) => {
     // Ignore the first two args.
     if(index >= 2) {
-      readFile(file).then((val) => {
-        files.push(val);
-        console.log(val.join(", "));
-      });
+      promises.push(readFile(file));
     }
+  });
+
+  Promise.all(promises).then(vals => {
+    // Merged all the arrays.
+    vals = [].concat.apply([], vals);
+    console.log(vals.length);
   });
 }
 
