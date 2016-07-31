@@ -6,6 +6,11 @@ if(process.argv.length < 3) {
   process.exit(1);
 }
 
+// Sentence case for first word.
+function sentenceCase(word) {
+  return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
+}
+
 // Takes an array then returns the same array all mixed up.
 function shuffleWords(data) {
   let j, x, i;
@@ -42,9 +47,9 @@ function getFiles() {
   });
 
   Promise.all(promises).then(vals => {
-    // Merged all the arrays.
-    vals = [].concat.apply([], vals);
-    console.log(vals.join(", "));
+    let combined = vals.map((words, index) => {
+
+    });
   });
 }
 
