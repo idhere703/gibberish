@@ -48,7 +48,9 @@ function getFiles() {
 
   Promise.all(promises).then(vals => {
     let combined = vals.map((words, index) => {
-
+      let sentence = words.map(word => {
+        console.log(word);
+      });
     });
   });
 }
