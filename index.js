@@ -30,6 +30,8 @@ function readFile(file) {
       if (err) reject(err);
       // Split the array.
       data = data.split("\n");
+      // Remove the empty string.
+      data.pop();
       resolve(shuffleWords(data));
     });
   });
@@ -47,11 +49,15 @@ function getFiles() {
   });
 
   Promise.all(promises).then(vals => {
-    let combined = vals.map((words, index) => {
-      let sentence = words.map(word => {
-        console.log(word);
+    console.log(vals);
+    let sentences = [];
+    vals.map((words, wordsIndex) => {
+      words.map((word, wordIndex) => {
+        sentences[wordIndex] = sentences[wordIndex] ?sentences[wordIndex] + word + " ": word + " ";
       });
     });
+    // Some of these even make sense...
+    console.log(sentences.join("\n"));
   });
 }
 
