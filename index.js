@@ -1,4 +1,5 @@
 let fs = require('fs');
+let express = require('express');
 let files = [];
 
 // If we don't have a file.
@@ -60,6 +61,3 @@ function getFiles() {
     console.log(sentences.join("\n"));
   });
 }
-
-// Get the files and print them.
-getFiles();
