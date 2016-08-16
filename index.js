@@ -61,3 +61,6 @@ function getFiles() {
     console.log(sentences.join("\n"));
   });
 }
+
+
+getFiles();
